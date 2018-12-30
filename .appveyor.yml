@@ -1,0 +1,19 @@
+# This is the build script for AppVeyor CI
+# To build and test LightTwinSVM program on Windows OS
+ 
+enviroment:
+
+  matrix:
+    
+    - PYTHON: "C:\\Python37-x64"
+      PYTHON_VERSION: "3.7.1"
+      PYTHON_ARCH: "64"
+      
+install:
+  # Prepend Python to The PATH
+  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  
+  # Check that we have the expected version and architecture for Python
+  - "python --version"
+  - "python -c \"import struct; print(struct.calcsize('P') * 8)\""
+  
