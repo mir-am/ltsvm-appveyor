@@ -10,6 +10,9 @@ environment:
       PYTHON_ARCH: "64"
       
 install:
+  # Check currrent working directory
+  - "cd"
+
   # Prepend Python to The PATH
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
   
@@ -23,4 +26,9 @@ install:
   
   # Install dependencies for testing LightTwinSVM
   - "pip install -r requirments.txt"
+  
+  # Clone Armadillo library for building C++ extension moudle
+  # Armadillo is licensed under the Apache License, Version 2.0
+  - "git clone https://github.com/mir-am/armadillo-code .\src\optimizer\armadillo-code"
+  - "dir .\src\optimizer"
   
