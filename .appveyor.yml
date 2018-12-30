@@ -29,6 +29,6 @@ install:
   
   # Clone Armadillo library for building C++ extension moudle
   # Armadillo is licensed under the Apache License, Version 2.0
-  - "git clone https://github.com/mir-am/armadillo-code .\src\optimizer\armadillo-code"
-  - "dir .\src\optimizer"
+  - "git clone https://github.com/mir-am/armadillo-code .\\src\\optimizer\\armadillo-code"
+  - "dir .\\src\\optimizer"
   
