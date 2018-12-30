@@ -1,7 +1,7 @@
 # This is the build script for AppVeyor CI
 # To build and test LightTwinSVM program on Windows OS
  
-enviroment:
+environment:
 
   matrix:
     
