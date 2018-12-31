@@ -43,5 +43,5 @@ build_script:
       mv "clippdcd$py_ext" ..\
       popd
   - "cd"
-  - "ls .\src\"
+  - "ls .\\src\\"
   
