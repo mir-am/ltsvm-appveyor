@@ -37,7 +37,11 @@ install:
 build_script:
   # Build C++ extension module (clipDCD optimizer)
   - ps: |
-      cd .\src\optimizer
+      $py_ext = (python -c "from distutils.sysconfig import get_config_var; print(get_config_var('EXT_SUFFIX'))")
+      pushd .\src\optimizer
       python setup.py build_ext --inplace
+      mv "clippdcd$py_ext" ..\
+      popd
   - "cd"
+  - "ls .\src\"
   
