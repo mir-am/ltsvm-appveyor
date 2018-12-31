@@ -28,7 +28,7 @@ install:
   - "pip install -r requirments.txt"
   
   # Install Cython for building extension module
-  - "pip install Cython"
+  - "pip install Cython mkl"
   
   # Clone Armadillo library for building C++ extension moudle
   # Armadillo is licensed under the Apache License, Version 2.0
