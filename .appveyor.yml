@@ -49,7 +49,7 @@ build_script:
       echo $currentPath
       $currentDir=(Get-Item -Path ".\").FullName
       $newPath=Join-Path $currentDir "src\optimizer\armadillo-code\lib_win64"
-      $updatedPath=$currentPath+$newPath
+      $updatedPath=$currentPath+';'+$newPath
       Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH –Value $updatedPath
       (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
   
