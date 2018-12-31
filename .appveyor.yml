@@ -42,6 +42,9 @@ build_script:
       python setup.py build_ext --inplace
       mv "clippdcd$py_ext" ..\
       popd
-  - "cd"
-  - "ls .\\src\\"
+  
+test_script:
+  # Create a folder for saving test results
+  - "mkdir result"
+  - "python src\\test_program.py -f"
   
