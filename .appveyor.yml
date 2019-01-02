@@ -52,10 +52,11 @@ build_script:
       $updatedPath=$currentPath+';'+$newPath
       Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH –Value $updatedPath
       (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
-      ls $updatedPath
+      ls $newPath
   
 test_script:
   # Create a folder for saving test results
   - "mkdir result"
-  - "python src\\test_program.py -f"
+  - ps: |
+      "python src\\test_program.py -f"
   
