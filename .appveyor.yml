@@ -58,8 +58,5 @@ build_script:
 test_script:
   # Create a folder for saving test results
   - "mkdir result"
-  - ps: |
-      echo $env:Path
-      python --version
-      python src\\test_program.py -f
-  
+  - "python --version"
+  - "python src\\test_program.py -f"
