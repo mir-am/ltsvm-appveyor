@@ -46,19 +46,20 @@ build_script:
   # Adding BLAS and LAPACK libs to PATH   
   - ps: |
       $currentPath=(Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
-      echo $currentPath
+      #echo $currentPath
       $currentDir=(Get-Item -Path ".\").FullName
       $newPath=Join-Path $currentDir "src\optimizer\armadillo-code\lib_win64\"
       #$updatedPath=$currentPath+';'+$newPath
       #Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH –Value $updatedPath
       #(Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
-      $env:Path += $newPath 
+      $env:Path += ';' + $newPath 
       echo $env:Path
   
 test_script:
   # Create a folder for saving test results
   - "mkdir result"
   - ps: |
+      echo $env:Path
       python --version
       python src\\test_program.py -f
   
