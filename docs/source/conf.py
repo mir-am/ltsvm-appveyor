@@ -49,7 +49,7 @@ extensions = [
 	'sphinx.ext.autosummary',
 ]
 
-autodoc_mock_imports = ["ltsvm.optimizer", "optimizer", "clipdcd"]
+autodoc_mock_imports = ["ltsvm", "ltsvm.optimizer", "optimizer", "clipdcd"]
 autodoc_member_order = 'bysource'
 # Default flags used by autodoc directives
 autodoc_default_flags = ['members', 'show-inheritance']
