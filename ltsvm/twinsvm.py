@@ -16,15 +16,20 @@ Motivated by the following paper, the multi-class TSVM is developed.
 Tomar, D., & Agarwal, S. (2015). A comparison on multi-class classification methods based on least squares twin support vector machine. Knowledge-Based Systems, 81, 131-147.
 """
 
+try:
 
-from sklearn.base import BaseEstimator, ClassifierMixin
-from sklearn.utils.multiclass import check_classification_targets
-from sklearn.utils.validation import check_X_y, check_is_fitted, check_array
-from sklearn.utils import column_or_1d
-import numpy as np
-
-# ClipDCD optimizer is an extension module which is implemented in C++
-from ltsvm.optimizer import clipdcd
+    from sklearn.base import BaseEstimator, ClassifierMixin
+    from sklearn.utils.multiclass import check_classification_targets
+    from sklearn.utils.validation import check_X_y, check_is_fitted, check_array
+    from sklearn.utils import column_or_1d
+    import numpy as np
+    
+    # ClipDCD optimizer is an extension module which is implemented in C++
+    from ltsvm.optimizer import clipdcd
+    
+except Exception as e:
+    
+    print(e)
 
 
 class TSVM(BaseEstimator):
