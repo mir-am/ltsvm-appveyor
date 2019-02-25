@@ -11,23 +11,17 @@ In this module, methods are defined for evluating TwinSVM perfomance such as cro
 train/test split, grid search and generating the detailed result.
 """
 
-try:
+from ltsvm.twinsvm import TSVM, MCTSVM, OVO_TSVM
+from ltsvm.misc import progress_bar_gs, time_fmt
+from sklearn.model_selection import train_test_split, KFold, ParameterGrid
+from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score
+#from itertools import product
+from datetime import datetime
+import numpy as np
+import pandas as pd
+import os
+# import time
     
-    from ltsvm.twinsvm import TSVM, MCTSVM, OVO_TSVM
-    from ltsvm.misc import progress_bar_gs, time_fmt
-    from sklearn.model_selection import train_test_split, KFold, ParameterGrid
-    from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score
-    #from itertools import product
-    from datetime import datetime
-    import numpy as np
-    import pandas as pd
-    import os
-    # import time
-    
-except Exception as e:
-    
-    print(e)
-
 
 def eval_metrics(y_true, y_pred):
 
