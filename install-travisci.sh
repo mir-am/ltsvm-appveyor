@@ -55,3 +55,8 @@ fi
 # Creates result directory for saving unit test's output
 mkdir "result"
 
+# For OSX, unit tests should be ran here. Because of virtualenv!
+if [[ "$TRAVIS_OS_NAME" == "osx" ]]
+then
+python -m unittest discover -s tests
+fi

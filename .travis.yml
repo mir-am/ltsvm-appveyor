@@ -39,4 +39,4 @@ before_install:
 install: ./install-travisci.sh
 
 script:
-- ./ltsvm_test.sh
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; ./ltsvm_test.sh; fi
