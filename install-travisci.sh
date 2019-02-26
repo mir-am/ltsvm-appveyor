@@ -20,7 +20,7 @@ pyenv install $PYENV_VERSION
 # Manually adding to path!!
 export PYENV_VERSION=$PYENV_VERSION
 export PATH="/Users/travis/.pyenv/shims:${PATH}"
-pyenv-virtualenv venv
+pyenv virtualenv venv
 source venv/bin/activate
 
 pip install --upgrade pip
