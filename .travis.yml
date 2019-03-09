@@ -7,12 +7,7 @@ language: python
 
 # Ubuntu 16.04 LTS & OS X
 matrix:
-  include:      
-    - os: linux
-      dist: xenial
-      sudo: true
-      python: '3.7'
-    
+  include:        
     - os: osx
       language: generic
       env: PYENV_VERSION=3.7.2
@@ -20,23 +15,11 @@ matrix:
 branches:
   only:
   - master
-  - dev
 
-addons:
-  apt:
-    packages:
-    - liblapack-dev
-    - libblas-dev
-    - python3-dev
-    - python3-tk
 
 before_install:
   - chmod +x install-travisci.sh
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo $'#!/bin/bash\npython3 -m unittest discover -s tests' > ltsvm_test.sh; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo $'#!/bin/bash\npython -m unittest discover -s tests' > ltsvm_test.sh; fi
-  - chmod +x ltsvm_test.sh
   
 install: ./install-travisci.sh
 
-script:
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./ltsvm_test.sh; fi
+
