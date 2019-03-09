@@ -10,3 +10,11 @@
 
 python --version
 echo "OS: $OSTYPE"
+
+if [ "$OSTYPE" == "darwin"* ]
+then
+	echo "A MacOS system is detected."
+
+else
+	echo "OSX not detected!!"
+fi
