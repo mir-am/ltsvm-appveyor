@@ -18,8 +18,8 @@ branches:
 
 
 before_install:
-  - chmod +x install-travisci.sh
+  - chmod +x install-osx.sh
   
-install: ./install-travisci.sh
+install: ./install-osx.sh
 
 
