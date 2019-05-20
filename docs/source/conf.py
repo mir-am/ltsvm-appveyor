@@ -17,28 +17,30 @@ import sys
 from unittest.mock import MagicMock
 
 # Making source files of the LightTwinSVM's package available in sys.path
-sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))), 'ltsvm'))
+sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))), 'libtsvm'))
 sys.path.insert(0, os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))
 # sys.path.insert(0, os.path.abspath('.'))
 
 # Mocking C/C++ extension modules
+# For fixing build error of API documentation
 class Mock(MagicMock):
     @classmethod
     def __getattr__(cls, name):
         return MagicMock()
     
-MOCK_MODULES = ['ltsvm.optimizer.clipdcd']
+MOCK_MODULES = ['libtsvm.optimizer.clipdcd']
 sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
+
 # -- Project information -----------------------------------------------------
 
-project = 'LightTwinSVM'
+project = 'LIBTwinSVM'
 copyright = '2019, Mir, A.'
 author = 'Mir, A.'
 
 # The short X.Y version
-version = '0.5.0'
+version = '0.1.0'
 # The full version, including alpha/beta/rc tags
-release = '0.5.0'
+release = '0.1.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -50,15 +52,17 @@ release = '0.5.0'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+# 'sphinx.ext.autosummary' 'numpydoc', # Handles NumPy docstrings
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.coverage',
     'sphinx.ext.viewcode',
-	'sphinx.ext.autosummary',
+    'sphinx.ext.autosummary',
+    'numpydoc',
 ]
 
-#autodoc_mock_imports = ["ltsvm", "ltsvm.optimizer", "optimizer", "clipdcd"]
-#autodoc_mock_imports = ["ltsvm.optimizer.clipdcd"]
+# auto_mock doesn't work and readthedocs fails to build API docs.
+#autodoc_mock_imports = ["ltsvm", "twinsvm"]
 autodoc_member_order = 'bysource'
 # Default flags used by autodoc directives
 autodoc_default_flags = ['members', 'show-inheritance']
@@ -125,7 +129,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'LightTwinSVMdoc'
+htmlhelp_basename = 'LIBTwinSVMdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -152,7 +156,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'LightTwinSVM.tex', 'LightTwinSVM Documentation',
+    (master_doc, 'LIBTwinSVM.tex', 'LIBTwinSVM Documentation',
      'Mir, A.', 'manual'),
 ]
 
@@ -162,7 +166,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'lighttwinsvm', 'LightTwinSVM Documentation',
+    (master_doc, 'libtwinsvm', 'LIBTwinSVM Documentation',
      [author], 1)
 ]
 
@@ -173,8 +177,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'LightTwinSVM', 'LightTwinSVM Documentation',
-     author, 'LightTwinSVM', 'One line description of project.',
+    (master_doc, 'LIBTwinSVM', 'LIBTwinSVM Documentation',
+     author, 'LIBTwinSVM', 'One line description of project.',
      'Miscellaneous'),
 ]
 

@@ -1,25 +1,40 @@
-# LightTwinSVM Program - Simple and Fast
-# Developer: Mir, A. (mir-am@hotmail.com)
+# LIBTwinSVM: A Library for Twin Support Vector Machines
+# Developers: Mir, A.
+# Version: 0.1 - 2019-03-20
 # License: GNU General Public License v3.0
 
-# Configuration file for building and testing LightTwinSVM on Travis CI
+# Configuration file for building and testing LIBTwinSVM on Travis CI
 language: python
 
-# Ubuntu 16.04 LTS & OS X
+# Ubuntu 16.04 LTS
 matrix:
-  include:        
-    - os: osx
-      language: generic
-      env: PYENV_VERSION=3.7.2
+  include:
+    - os: linux
+      dist: xenial
+      sudo: true
+      python: '3.5'
+      
+    - os: linux
+      dist: xenial
+      sudo: true
+      python: '3.6'
+      
+    - os: linux
+      dist: xenial
+      sudo: true
+      python: '3.7'
 
-branches:
-  only:
-  - master
-
-
-before_install:
-  - chmod +x install-osx.sh
+addons:
+  apt:
+    packages:
+    - liblapack-dev
+    - libblas-dev
   
-install: ./install-osx.sh
+install:
+- python --version && pip --version
+- pip install numpy cython
+- git clone --recursive https://github.com/mir-am/LIBTwinSVM
+- pip install . -vv
 
-
+script:
+- python -m unittest discover -s tests

@@ -1,6 +1,4 @@
-build
-_static
-_templates
+# Git should ignores unnecessary files and folders
 __pycache__
-temp
-result
+build
+*.pyc
